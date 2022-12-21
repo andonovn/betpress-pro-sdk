@@ -4,15 +4,17 @@ namespace Andonovn\BetpressProSdk;
 
 class InstallBetPressPro extends Call
 {
-    public function handle($name, $url)
+    public function handle($name, $email, $url)
     {
         $response = $this->http->post(
             'tenants',
-            compact('name', 'url')
+            compact('name', 'email', 'url')
         );
 
-        // test
+        if ($response->status() !== 201) {
+            throw new \Exception('API call to install BetPress Pro has failed. Please try again later!');
+        }
 
-        return $response;
+        return $response->json();
     }
 }

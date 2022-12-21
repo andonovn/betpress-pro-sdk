@@ -6,9 +6,9 @@ abstract class Call
 {
     protected $http;
 
-    public function __construct($apiUrl)
+    public function __construct($apiUrl = null)
     {
         $this->http = (new \Illuminate\Http\Client\Factory())
-            ->baseUrl($apiUrl);
+            ->baseUrl($apiUrl ?: 'https://betpress.pro/api/');
     }
 }
