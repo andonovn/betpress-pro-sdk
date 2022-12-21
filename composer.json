@@ -1,0 +1,20 @@
+{
+    "name": "andonovn/betpress-pro-sdk",
+    "description": "BetPress Pro SDK",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Andonovn\\BetpressProSdk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nikolay Andonov",
+            "email": "nikolay.andonov@windowslive.com"
+        }
+    ],
+    "require": {
+        "illuminate/http": "^9.45",
+        "guzzlehttp/guzzle": "^7.5"
+    }
+}
