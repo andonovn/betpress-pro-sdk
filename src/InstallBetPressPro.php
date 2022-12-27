@@ -2,6 +2,8 @@
 
 namespace Andonovn\BetpressProSdk;
 
+use Andonovn\BetpressProSdk\ApiException;
+
 class InstallBetPressPro extends Call
 {
     public function handle($name, $email, $url)
@@ -12,7 +14,7 @@ class InstallBetPressPro extends Call
         );
 
         if ($response->status() !== 201) {
-            throw new \Exception('API call to install BetPress Pro has failed. Please try again later!');
+            throw new ApiException('API call to install BetPress Pro has failed. Please try again later!');
         }
 
         return $response->json();
