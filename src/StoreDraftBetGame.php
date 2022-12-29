@@ -18,9 +18,9 @@ class StoreDraftBetGame extends Call
         );
 
         if ($response->status() !== 200 && $response->status() !== 201) {
-            throw new ApiException(
-                'API call to store bettor\'s draft bet\'s game has failed. Please try again later! Response: '
-                    . $response->status()
+            throw ApiException::fromResponse(
+                'API call to store bettor\'s draft bet\'s game has failed. Please try again later!',
+                $response
             );
         }
 
