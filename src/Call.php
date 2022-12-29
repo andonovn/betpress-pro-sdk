@@ -9,6 +9,7 @@ abstract class Call
     public function __construct($token, $apiUrl = null)
     {
         $this->http = (new \Illuminate\Http\Client\Factory())
+            ->acceptJson()
             ->baseUrl($apiUrl ?: 'https://betpress.pro/api/');
 
         if ($token) {
