@@ -12,7 +12,7 @@ class UpdateDraftBetStake extends Call
             'stake' => $stake,
         ]);
 
-        if ($response->status() !== 200) {
+        if ($response->status() !== 200 && $response->status() !== 201) {
             throw new ApiException(
                 'API call to update bettor\'s draft bet\'s stake has failed. Please try again later! Response: '
                     . $response->status()
