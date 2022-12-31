@@ -11,9 +11,9 @@ class SubmitDraftBet extends Call
         $response = $this->http->post('bettors/' . $bettorId . '/submitted-bets');
 
         if ($response->status() !== 200) {
-            throw new ApiException(
-                'API call to submit bettor\'s draft bet has failed. Please try again later! Response: '
-                    . $response->status()
+            throw ApiException::fromResponse(
+                'API call to submit bettor\'s draft bet has failed. Please try again later!',
+                $response
             );
         }
 
