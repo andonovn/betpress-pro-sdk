@@ -2,6 +2,7 @@
     "name": "andonovn/betpress-pro-sdk",
     "description": "BetPress Pro SDK",
     "type": "library",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Andonovn\\BetpressProSdk\\": "src/"
