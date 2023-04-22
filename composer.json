@@ -15,7 +15,6 @@
         }
     ],
     "require": {
-        "illuminate/http": "^9.45",
-        "guzzlehttp/guzzle": "^7.5"
+        "guzzlehttp/guzzle": "^6.0"
     }
 }
