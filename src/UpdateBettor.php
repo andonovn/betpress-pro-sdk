@@ -10,12 +10,14 @@ class UpdateBettor extends Call
     public function handle($id, $name)
     {
         try {
-            return $this->http
-                ->patch('bettors/' . $id, [
+            return $this->asArray(
+                $this->http->patch('bettors/'.$id, [
                     'form_params' => [
                         'name' => $name,
                     ],
-                ])->getBody();
+                ])
+                ->getBody()
+            );
         } catch (GuzzleException $e) {
             throw new ApiException('API call to update bettor ' . $id . ' has failed. Please try again later! Message: '.$e->getMessage());
         }

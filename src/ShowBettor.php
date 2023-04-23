@@ -3,17 +3,18 @@
 namespace Andonovn\BetpressProSdk;
 
 use Andonovn\BetpressProSdk\ApiException;
+use GuzzleHttp\Exception\GuzzleException;
 
 class ShowBettor extends Call
 {
     public function handle($id)
     {
-        $response = $this->http->get('bettors/' . $id);
-
-        if ($response->status() !== 200) {
-            throw new ApiException('API call to show bettor ' . $id . ' has failed. Please try again later!');
+        try {
+            return $this->asArray(
+                $this->http->get('bettors/'.$id)->getBody()
+            );
+        } catch (GuzzleException $e) {
+            throw new ApiException('API call to show bettor '.$id.' has failed. Please try again later! Message: ' . $e->getMessage());
         }
-
-        return $response->json();
     }
 }

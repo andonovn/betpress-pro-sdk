@@ -6,21 +6,21 @@ use Exception;
 
 class ApiException extends Exception
 {
-    protected $response;
+    protected $validationErrors;
 
-    public static function fromResponse($message, $response)
+    public static function fromValidationErrors($message, $validationErrors)
     {
-        return (new static($message))->setResponse($response);
+        return (new static($message))->setValidationErrors($validationErrors);
     }
 
-    public function getResponse()
+    public function getValidationErrors()
     {
-        return $this->response;
+        return $this->validationErrors;
     }
 
-    public function setResponse($response)
+    public function setValidationErrors($validationErrors)
     {
-        $this->response = $response;
+        $this->validationErrors = $validationErrors;
 
         return $this;
     }

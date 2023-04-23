@@ -3,17 +3,18 @@
 namespace Andonovn\BetpressProSdk;
 
 use Andonovn\BetpressProSdk\ApiException;
+use GuzzleHttp\Exception\GuzzleException;
 
 class GetLeaderboards extends Call
 {
     public function handle()
     {
-        $response = $this->http->get('leaderboards');
-
-        if ($response->status() !== 200) {
-            throw new ApiException('API call to leaderboards has failed. Please try again later!');
+        try {
+            return $this->asArray(
+                $this->http->get('leaderboards')->getBody()
+            );
+        } catch (GuzzleException $e) {
+            throw new ApiException('API call to leaderboards has failed. Please try again later! Message: ' . $e->getMessage());
         }
-
-        return $response->json();
     }
 }
