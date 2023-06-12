@@ -14,6 +14,10 @@ class GetBets extends Call
                 $this->http->get('bettors/' . $bettorId . '/bets')->getBody()
             );
         } catch (GuzzleException $e) {
+            if (method_exists($e, 'getResponse') && $e->getResponse()->getStatusCode() === 402) {
+                throw new ExpiredSubscriptionException($e->getMessage());
+            }
+
             throw new ApiException('API call to bettor\'s bets has failed. Please try again later! Message: '.$e->getMessage());
         }
     }
