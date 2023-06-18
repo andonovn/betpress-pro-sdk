@@ -7,11 +7,11 @@ use GuzzleHttp\Exception\GuzzleException;
 
 class GetBets extends Call
 {
-    public function handle($bettorId)
+    public function handle($bettorId, $page)
     {
         try {
             return $this->asArray(
-                $this->http->get('bettors/' . $bettorId . '/bets')->getBody()
+                $this->http->get('bettors/' . $bettorId . '/bets?page='.$page)->getBody()
             );
         } catch (GuzzleException $e) {
             if (method_exists($e, 'getResponse') && $e->getResponse()->getStatusCode() === 402) {
